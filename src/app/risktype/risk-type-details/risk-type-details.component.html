@@ -1,3 +1,47 @@
-<p>
-  risk-type-details works!
-</p>
+<div *ngIf="risk$ | async; let risk; else loading" class="content">
+  <h3>{{risk.description}}</h3>
+  <form>
+    <ng-container *ngFor="let f of risk.text_fields">
+      <div class="field">
+        <label class="label">{{f}}</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input">
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngFor="let f of risk.number_fields">
+      <div class="field">
+        <label class="label">{{f}}</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Number input">
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngFor="let f of risk.date_fields">
+      <div class="field">
+        <label class="label">{{f}}</label>
+        <div class="control">
+          <input class="input" type="date" placeholder="Date input">
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngFor="let f of risk.enum_fields">
+      <div class="field">
+        <label class="label">{{f.name}}</label>
+        <div class="select">
+          <select [name]="f.name" class="select">
+            <option *ngFor="let item of f.enum_field_values" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-container>
+  </form>
+
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
