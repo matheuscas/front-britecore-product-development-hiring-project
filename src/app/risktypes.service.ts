@@ -13,4 +13,8 @@ export class RisktypesService {
   getAll() {
     return this.http.get(this.endpoint);
   }
+
+  get(id: number) {
+    return this.http.get(`${this.endpoint}/${id}`);
+  }
 }
