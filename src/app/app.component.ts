@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RisktypesService } from './risktypes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'brietcore-challenge-front';
+  title = 'BriteCore Product Development Project';
+  risks$: Observable<any[]>;
+
+  constructor(public risksService: RisktypesService) {
+    this.risks$ = this.getAllRisks();
+  }
+
+  getAllRisks(): any {
+    return this.risksService.getAll();
+  }
 }
