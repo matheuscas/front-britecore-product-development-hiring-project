@@ -12,6 +12,7 @@ export class RiskTypeDetailsComponent implements OnInit, OnDestroy {
 
   routeSub$: Subscription;
   risk$: any;
+  value: Date;
 
   constructor(private route: ActivatedRoute, public risktypesService: RisktypesService) { }
 
