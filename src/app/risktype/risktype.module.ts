@@ -4,9 +4,11 @@ import { RiskTypeDetailsComponent } from './risk-type-details/risk-type-details.
 import { Routes, RouterModule } from '@angular/router';
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
+import { RiskTypesComponent } from './risk-types/risk-types.component';
 
 const routes: Routes = [
-  {path: '', component: RiskTypeDetailsComponent}
+  {path: '', component: RiskTypesComponent},
+  {path: ':id', component: RiskTypeDetailsComponent},
 ];
 
 @NgModule({
@@ -16,6 +18,6 @@ const routes: Routes = [
     FormsModule,
     CalendarModule
   ],
-  declarations: [RiskTypeDetailsComponent]
+  declarations: [RiskTypeDetailsComponent, RiskTypesComponent]
 })
 export class RisktypeModule { }
