@@ -9,17 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'BriteCore Product Development Project';
-  risks: any[];
-  risksError: any;
 
-  constructor(public risksService: RisktypesService) {
-    this.getAllRisks().subscribe(
-      risks => this.risks = risks,
-      error => this.risksError = error
-    );
-  }
-
-  getAllRisks(): any {
-    return this.risksService.getAll();
-  }
+  constructor() {}
 }
