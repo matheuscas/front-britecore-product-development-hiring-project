@@ -6,7 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
-  {path: 'risktypes/:id', loadChildren: './risktype/risktype.module#RisktypeModule'}
+  {path: 'risktypes/:id', loadChildren: './risktype/risktype.module#RisktypeModule'},
+  {path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule'},
+  {path: '**', redirectTo: 'not-found'}
 ];
 
 @NgModule({
