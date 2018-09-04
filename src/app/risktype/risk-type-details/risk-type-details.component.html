@@ -1,4 +1,4 @@
-<div *ngIf="risk$ | async; let risk; else loading" class="content">
+<div *ngIf="risk; else loading" class="content">
   <h3>{{risk.description}}</h3>
   <form>
     <ng-container *ngFor="let f of risk.text_fields">
@@ -43,6 +43,10 @@
 
 </div>
 
-<ng-template #loading>
+<ng-template #loading *ngIf="!riskError; else error">
   <p>Loading...</p>
+</ng-template>
+
+<ng-template #error>
+  <p>Custom risk model not found</p>
 </ng-template>

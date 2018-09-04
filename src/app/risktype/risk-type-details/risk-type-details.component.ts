@@ -11,14 +11,18 @@ import { RisktypesService } from '../../risktypes.service';
 export class RiskTypeDetailsComponent implements OnInit, OnDestroy {
 
   routeSub$: Subscription;
-  risk$: any;
+  risk: any;
+  riskError: any;
   value: Date;
 
   constructor(private route: ActivatedRoute, public risktypesService: RisktypesService) { }
 
   ngOnInit() {
     this.routeSub$ = this.route.params.subscribe(params => {
-      this.risk$ = this.risktypesService.get(+params['id']);
+      this.risktypesService.get(+params['id']).subscribe(
+        risk => this.risk = risk,
+        error => this.riskError = error
+      );
     });
   }
 
