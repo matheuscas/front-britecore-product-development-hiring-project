@@ -7,7 +7,7 @@
     Back
   </a>
 </div>
-<div *ngIf="risk; else loading" class="content">
+<div *ngIf="risk" class="content">
   <h3>{{risk.description}}</h3>
   <form>
     <ng-container *ngFor="let f of risk.text_fields">
@@ -52,10 +52,10 @@
 
 </div>
 
-<ng-template #loading *ngIf="!riskError; else error">
+<div *ngIf="loading">
   <p>Loading...</p>
-</ng-template>
+</div>
 
-<ng-template #error>
+<div *ngIf="riskError">
   <p>Custom risk model not found</p>
-</ng-template>
+</div>

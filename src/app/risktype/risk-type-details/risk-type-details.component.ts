@@ -14,6 +14,7 @@ export class RiskTypeDetailsComponent implements OnInit, OnDestroy {
   risk: any;
   riskError: any;
   value: Date;
+  public loading = true;
 
   constructor(private route: ActivatedRoute, public risktypesService: RisktypesService) { }
 
@@ -21,7 +22,8 @@ export class RiskTypeDetailsComponent implements OnInit, OnDestroy {
     this.routeSub$ = this.route.params.subscribe(params => {
       this.risktypesService.get(+params['id']).subscribe(
         risk => this.risk = risk,
-        error => this.riskError = error
+        error => this.riskError = error,
+        () => this.loading = false
       );
     });
   }
