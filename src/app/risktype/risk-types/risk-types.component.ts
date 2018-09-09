@@ -10,13 +10,15 @@ export class RiskTypesComponent implements OnInit {
 
   risks: any[];
   risksError: any;
+  loading = true;
 
   constructor(public risksService: RisktypesService) { }
 
   ngOnInit() {
     this.getAllRisks().subscribe(
       risks => this.risks = risks,
-      error => this.risksError = error
+      error => this.risksError = error,
+      () => this.loading = false
     );
   }
 

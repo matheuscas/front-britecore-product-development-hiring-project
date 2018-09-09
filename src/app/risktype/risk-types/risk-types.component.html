@@ -1,14 +1,14 @@
 <div class="content">
   <h2>List of custom risk types: </h2>
-  <ul *ngIf="risks; else loading">
+  <ul *ngIf="risks">
     <li *ngFor="let risk of risks">
       <a [routerLink]="['/risktypes', risk.id]">{{risk.description}}</a>
     </li>
   </ul>
-  <ng-template #loading *ngIf="!risksError; else error">
+  <div *ngIf="loading">
     <p>Loading...</p>
-  </ng-template>
-  <ng-template #error>
+  </div>
+  <div *ngIf="risksError">
     <p>{{risksError.statusText}}</p>
-  </ng-template>
+  </div>
 </div>
